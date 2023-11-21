@@ -176,6 +176,7 @@ const Product = () => {
                 {
                   sizes.map((size, index) => {
                     return <Button
+                      data-testid="size-btn"
                       key={index}
                       onClick={() => setSelectedSize(size)}
                       me={3}
@@ -202,6 +203,7 @@ const Product = () => {
                     </Box>
                     :
                     <Button
+                      data-testid="add-to-card-btn"
                       onClick={onClickAddCart}
                       my={1}
                       me={{ base: 0, md: 2 }}

@@ -8,6 +8,8 @@ const useGetReviewId = (userId, productId) => {
     const [commentId, setCommentId] = useState("");
 
     useEffect(() => {
+        if(!userId) return;
+        
         getRatingByOwnerId(userId)
             .then((result) => {
                 result.ratings.forEach((rating) => {

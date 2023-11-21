@@ -2,7 +2,6 @@
   "name": "clothify",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "dependencies": {
     "@chakra-ui/react": "^2.2.4",
     "@emotion/react": "^11.9.3",
@@ -32,7 +31,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run -b chrome"
   },
   "eslintConfig": {
     "extends": [

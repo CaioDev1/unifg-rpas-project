@@ -29,7 +29,7 @@ const Register = () => {
             if (result.data.newUser) {
               navigate('/login');
               toast({
-                title: 'Welcome to CLOTHIFY!',
+                title: 'Welcome to R-pas!',
                 description: 'You have successfully registered.',
                 status: 'success',
                 duration: 2000,

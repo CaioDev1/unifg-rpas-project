@@ -113,6 +113,7 @@ const ClothesCard = ({ productId, isDelivered }) => {
           objectFit='cover'
           maxHeight={620}
           src={product.imageUrl}
+          data-testid="search-cloth-card-image"
           onClick={() => navigate(`/product/${product._id}`, { state: { "productId": product._id } })}
         />
         <Box px={3} py={5} bg='#fff' position='relative' width='100%' height={230} maxWidth={500} >

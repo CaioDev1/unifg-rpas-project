@@ -10,7 +10,25 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('login', (email, password) => {
+  cy.visit('/login')
+
+  cy.get('input[placeholder*="Enter Email"]').type(email)
+  cy.get('input[placeholder*="Enter password"]').type(password)
+
+  cy.get('.chakra-button').contains('Login').click()
+})
+
+Cypress.Commands.add('addItemToCart', () => {
+  cy.visit('/')
+
+  cy.get('[data-testid="cloth-dashboard-card"]').first().click()
+  cy.get('[data-testid="search-cloth-card-image"]').first().click()
+
+  cy.get('[data-testid="size-btn"]').first().click()
+
+  cy.get('[data-testid="add-to-card-btn"]').click()
+})
 //
 //
 // -- This is a child command --

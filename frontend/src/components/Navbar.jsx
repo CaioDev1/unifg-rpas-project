@@ -75,7 +75,8 @@ const Navbar = () => {
             letterSpacing={-2}
             cursor='pointer'
             onClick={() => navigate('/')}
-          >CLOTHIFY</Text>
+            data-testid="home-page-btn"
+          >R-pas</Text>
           <Hamburger base='flex' sm='none' md='none' />
         </Box>
         <Searchbar />
@@ -110,10 +111,10 @@ const Navbar = () => {
             }
             {
                !currentUser &&
-               <>
+               <div data-testid="login-btn">
                  <Icon fontSize={30} color='inherit' as={Person} />
                  <Text color='inherit' fontWeight={500} >Login</Text>
-               </>
+               </div>
             }
             {
               admin && currentUser &&
@@ -158,6 +159,7 @@ const Navbar = () => {
             transition={.5}
             _hover={{ color: 'facebook.700' }}
             onClick={() => navigate('/cart')}
+            data-testid="cart-page-btn"
           >
             <Icon fontSize={30} color='inherit' as={ShoppingCart} />
             <Text color='inherit' fontWeight={500} >{itemCount > 0 ? `Cart (${itemCount})` : 'Cart'}</Text>

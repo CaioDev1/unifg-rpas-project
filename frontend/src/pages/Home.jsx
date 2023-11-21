@@ -42,14 +42,14 @@ const Home = () => {
           </Box>
           <Box color='#fff' alignItems='center' display='flex' flexDirection='column' mt={{ base: 5, md: 0 }} >
             <WorkspacePremium sx={{ fontSize: 50 }} color='inherit' />
-            <Text mt={3} fontSize={20} fontWeight={600} color='inherit' >Clothify Quality Assurance</Text>
+            <Text mt={3} fontSize={20} fontWeight={600} color='inherit' >R-pas Quality Assurance</Text>
           </Box>
         </Container>
       </Box>
       <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={{ base: 3, md: 5 }} px={{ base: 3, md: 0 }} py={{ base: 3, md: 5 }} mt={5} maxWidth={1200} mx='auto' >
         {
           miniImages && miniImages.map((image, index) => {
-            return <Image key={index} cursor='pointer' onClick={(onClickImage)} src={image.url} />
+            return <Image key={index} data-testid="cloth-dashboard-card" cursor='pointer' onClick={(onClickImage)} src={image.url} />
           })
         }
         {

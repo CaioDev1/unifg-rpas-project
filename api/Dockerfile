@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 node:20-alpine as build
+FROM node:14-alpine as build
 
 WORKDIR /app
 
