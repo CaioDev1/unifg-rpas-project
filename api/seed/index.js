@@ -1,4 +1,4 @@
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 const mongoose = require('mongoose');
 const Category = require('../models/Category');
 const Comment = require('../models/Comment');
@@ -11,13 +11,13 @@ const Rating = require('../models/Rating');
 const Report = require('../models/Report');
 const User = require('../models/User');
 
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-  const db = mongoose.connection;
-  
-  const seedData = async () => {
+const seedData = () => {
+  mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true }, async () => {
+    const db = mongoose.connection;
+
     try {
       // Clear existing data
-      await Promise.all([
+      /* await Promise.all([
         Category.deleteMany({}),
         Comment.deleteMany({}),
         Genre.deleteMany({}),
@@ -28,8 +28,9 @@ mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTop
         Rating.deleteMany({}),
         Report.deleteMany({}),
         User.deleteMany({}),
-      ]);
-  
+      ]); */
+      await mongoose.connection.db.dropDatabase();
+
       // Seed data for Genre
       const genreSeed = [
         { name: 'Clothing', status: true },
@@ -38,7 +39,7 @@ mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTop
         // Add more genres as needed
       ];
       const genres = await Genre.insertMany(genreSeed);
-  
+
       // Seed data for Category
       const categorySeed = [
         { name: 'Men\'s Clothing', genre: genres[0]._id, status: true },
@@ -47,7 +48,7 @@ mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTop
         // Add more categories as needed
       ];
       const categories = await Category.insertMany(categorySeed);
-  
+
       // Seed data for Product
       const productSeed = [
         {
@@ -86,7 +87,7 @@ mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTop
       ];
 
       const miniImages = await MiniImage.insertMany(miniImageSeed);
-  
+
       // // Seed data for Comment
       // const commentSeed = [
       //   { for: products[0]._id, comment: 'Great product!', author: /* Add a valid User ObjectId here */ },
@@ -94,7 +95,7 @@ mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTop
       //   // Add more comments as needed
       // ];
       // await Comment.insertMany(commentSeed);
-  
+
       // Seed data for User
       const userSeed = [
         {
@@ -120,14 +121,14 @@ mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTop
         // Add more users as needed
       ];
       await User.insertMany(userSeed);
-  
+
       console.log('Seed data inserted successfully');
       db.close();
     } catch (error) {
       console.error('Error inserting seed data:', error);
       db.close();
     }
-  };
-  
-  seedData();
-});
+  })
+};
+
+module.exports = seedData;

@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watchAll",
     "start": "nodemon server.js",
     "start:prod": "npm run seed && node server.js",
     "seed": "node ./seed/"
@@ -26,5 +27,8 @@
     "nodemon": "^2.0.19",
     "stripe": "^10.0.0",
     "supertest": "^6.3.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.10"
   }
 }
