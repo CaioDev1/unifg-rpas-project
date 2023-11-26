@@ -4,7 +4,7 @@ import { Box, SimpleGrid, Button, Select, Text, Icon, Heading } from '@chakra-ui
 
 import ClothesCard from '../components/ClothesCard';
 import FilterMenu from '../components/FilterMenu';
-import { getProductByCategoryId, getProductBySearch } from '../services/ProductServices';
+import { getProductByCategoryId, getProductBySearch, getAllProducts } from '../services/ProductServices';
 import { useSearchContext } from '../contexts/SearchContext';
 import { SearchOff } from '@mui/icons-material';
 
@@ -31,6 +31,11 @@ const Search = () => {
           setProducts(result.products);
         });
       setSortBy("recommended");
+    } else {
+      getAllProducts()
+        .then((result) => {
+          setProducts(result.allProducts);
+        })
     }
   }, [state, search, canSearch]);
 
@@ -59,11 +64,11 @@ const Search = () => {
         display='flex'
         justifyContent='space-between'
         py={5} >
-        <Button colorScheme='facebook' variant='outline' backgroundColor='#fff' onClick={() => setOpenFilter(!openFilter)} >{openFilter ? 'Hide' : 'Show'} Filter</Button>
+        <Button colorScheme='facebook' variant='outline' backgroundColor='#fff' onClick={() => setOpenFilter(!openFilter)} >{openFilter ? 'Ocultar' : 'Mostrar'} Filtro</Button>
         <Select colorScheme='facebook' onChange={handleChange} value={sortBy} backgroundColor='#fff' width='170px' >
-          <option value='recommended'>Best Sellers</option>
-          <option value='lowest'>Lowest Price</option>
-          <option value='highest'>Highest Price</option>
+          <option value='recommended'>Mais Vendidos</option>
+          <option value='lowest'>Menor Preço</option>
+          <option value='highest'>Maior Preço</option>
         </Select>
       </Box>
       <SimpleGrid minChildWidth={280} gap={3} spacingX={5} >
@@ -85,15 +90,15 @@ const Search = () => {
               p={3}
             >
               <Icon color='#314E89' fontSize={100} as={SearchOff} />
-              <Heading textAlign='center' fontSize={30} mt={8}  >Sorry, we couldn't find what you are looking for.</Heading>
-              <Text textAlign='center' fontSize={24} mt={2} fontWeight={300} >But don’t give up! Check out our bestsellers and find something for you!</Text>
+              <Heading textAlign='center' fontSize={30} mt={8}  >Desculpe, não conseguimos encontrar o que você está procurando.</Heading>
+              <Text textAlign='center' fontSize={24} mt={2} fontWeight={300} >Mas não desista! Confira nossos mais vendidos e encontre algo para você!</Text>
               <Button
                 variant='solid'
                 fontSize={20}
                 px={10} mt={10}
                 colorScheme='facebook'
                 onClick={() => navigate('/')}>
-                Start Shopping
+                Começar a Comprar
               </Button>
             </Box>
           </Box>

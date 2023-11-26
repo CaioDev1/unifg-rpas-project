@@ -6,7 +6,6 @@ import { useUserContext } from '../contexts/UserContext';
 import { getUserById, updateUser } from '../services/UserServices';
 
 const Infos = () => {
-
   const toast = useToast();
   const { currentUser } = useUserContext();
   const [address, setAddress] = useState("");
@@ -30,16 +29,16 @@ const Infos = () => {
         .then((result) => {
           if (result.status) {
             toast({
-              title: 'Error!',
-              description: 'Somethings went wrong.',
+              title: 'Erro!',
+              description: 'Algo deu errado.',
               status: 'error',
               duration: 2000,
               isClosable: true
             });
           } else {
             toast({
-              title: 'Successful!',
-              description: 'Successfully saved.',
+              title: 'Sucesso!',
+              description: 'Salvo com sucesso.',
               status: 'success',
               duration: 2000,
               isClosable: true
@@ -48,14 +47,13 @@ const Infos = () => {
         });
     } else {
       toast({
-        title: 'Error!',
-        description: 'Please enter a valid phone number.',
+        title: 'Erro!',
+        description: 'Por favor, insira um número de telefone válido.',
         status: 'error',
         duration: 2000,
         isClosable: true
       });
     }
-
   };
 
   const onInputAddress = (e) => {
@@ -63,31 +61,31 @@ const Infos = () => {
   };
 
   return (
-    <Box mt={10} p={2} >
-      <Text p={5} textAlign='center' fontSize={30} fontWeight={300} color='facebook.500' >My Informations</Text>
-      <Box display='flex' flexDirection={{ base: 'column', md: 'row' }} >
-        <Box width='100%' display='flex' flexDirection='column' alignItems='center'  >
-          <Text p={5} textAlign='center' fontSize={22} fontWeight={500} color='facebook.500' >Address</Text>
-          <Textarea mb={5} height={150} maxWidth={500} resize='none' placeholder='Please write your address...' value={address} onInput={onInputAddress} ></Textarea>
-          <Button colorScheme='facebook' onClick={onClickSave} >Save</Button>
+    <Box mt={10} p={2}>
+      <Text p={5} textAlign='center' fontSize={30} fontWeight={300} color='facebook.500'>Minhas Informações</Text>
+      <Box display='flex' flexDirection={{ base: 'column', md: 'row' }}>
+        <Box width='100%' display='flex' flexDirection='column' alignItems='center'>
+          <Text p={5} textAlign='center' fontSize={22} fontWeight={500} color='facebook.500'>Endereço</Text>
+          <Textarea mb={5} height={150} maxWidth={500} resize='none' placeholder='Por favor, escreva seu endereço...' value={address} onInput={onInputAddress}></Textarea>
+          <Button colorScheme='facebook' onClick={onClickSave}>Salvar</Button>
         </Box>
-        <Center height={300} mt={5} mx={3} display={{ base: 'none', md: 'block' }} >
+        <Center height={300} mt={5} mx={3} display={{ base: 'none', md: 'block' }}>
           <Divider orientation='vertical' />
         </Center>
-        <Box width='100%' display='flex' flexDirection='column' alignItems='center' >
-          <Text p={5} textAlign='center' fontSize={22} fontWeight={500} color='facebook.500' >Phone</Text>
-          <InputGroup maxWidth={300} marginX='auto' >
+        <Box width='100%' display='flex' flexDirection='column' alignItems='center'>
+          <Text p={5} textAlign='center' fontSize={22} fontWeight={500} color='facebook.500'>Telefone</Text>
+          <InputGroup maxWidth={300} marginX='auto'>
             <InputLeftElement
               pointerEvents='none'
               children={<Phone color='gray.300' />}
             />
-            <Input maxLength={11} type='tel' placeholder='Phone number' value={phone} onInput={onInputPhone} />
+            <Input maxLength={11} type='tel' placeholder='Número de telefone' value={phone} onInput={onInputPhone} />
           </InputGroup>
-          <Button mt={5} colorScheme='facebook' onClick={onClickSave} >Save</Button>
+          <Button mt={5} colorScheme='facebook' onClick={onClickSave}>Salvar</Button>
         </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export default Infos;

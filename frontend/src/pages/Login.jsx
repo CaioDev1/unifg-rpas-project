@@ -29,8 +29,8 @@ const Login = () => {
             if (result.data.currentUser) {
               setCurrentUser(result.data.currentUser._id);
               toast({
-                title: 'Logged in.',
-                description: 'You have successfully logged in.',
+                title: 'Logado.',
+                description: 'Você fez login com sucesso.',
                 status: 'success',
                 duration: 2000,
                 isClosable: true
@@ -44,8 +44,8 @@ const Login = () => {
             } else {
               resetForm();
               toast({
-                title: 'Error!',
-                description: 'Wrong email or password.',
+                title: 'Erro!',
+                description: 'Email ou senha incorretos.',
                 status: 'error',
                 duration: 2000,
                 isClosable: true
@@ -70,21 +70,21 @@ const Login = () => {
           <FormLabel fontSize={20} >Email</FormLabel>
           <Input
             name='email'
-            placeholder='Enter Email'
+            placeholder='Digite o e-mail'
             data-testid='email-input'
             onChange={handleChange}
             value={values.email}
           />
         </FormControl>
         <FormControl mt={3}>
-          <FormLabel fontSize={20} >Password</FormLabel>
+          <FormLabel fontSize={20} >Senha</FormLabel>
           <InputGroup size='md'>
             <Input
               name='password'
               pr='4.5rem'
               type={show ? 'text' : 'password'}
               data-testid='password-input'
-              placeholder='Enter password'
+              placeholder='Digite a senha'
               onChange={handleChange}
               value={values.password}
             />
@@ -95,14 +95,14 @@ const Login = () => {
             </InputRightElement>
           </InputGroup>
         </FormControl>
-        <Checkbox value={remember} onChange={() => setRemember(!remember)} mt={5} data-testid="remember-me">Remember me</Checkbox>
+        <Checkbox value={remember} onChange={() => setRemember(!remember)} mt={5} data-testid="remember-me">Lembrar-me</Checkbox>
         <Button mt={5} width='100%' variant='solid' colorScheme='facebook' disabled={!isValid} onClick={handleSubmit} >Login</Button>
         <br />
-        <Text my={3} width='100%' textAlign='center' >or</Text>
-        <Button width='100%' variant='outline' colorScheme='facebook' onClick={() => navigate('/register')} >Register</Button>
+        <Text my={3} width='100%' textAlign='center' >ou</Text>
+        <Button width='100%' variant='outline' colorScheme='facebook' onClick={() => navigate('/register')} >Registrar</Button>
       </Box>
     </Box>
-  )
+  );
 }
 
 export default Login;

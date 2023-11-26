@@ -1,3 +1,3 @@
 require('dotenv').config();
 
-seedData();
+seedData(process.env.MONGODB_URL);

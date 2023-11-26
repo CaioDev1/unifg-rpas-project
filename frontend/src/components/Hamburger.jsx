@@ -44,28 +44,28 @@ const Hamburger = ({ base, sm, md }) => {
                     {
                         admin && currentUser &&
                         <MenuGroup title='Admin'>
-                            <MenuItem onClick={() => navigate('/admin/products')} ><Inventory sx={{ marginRight: 2 }} />Products</MenuItem>
-                            <MenuItem onClick={() => navigate('/admin/categories')} ><Edit sx={{ marginRight: 2 }} />Genres and Categories</MenuItem>
-                            <MenuItem onClick={() => navigate('/admin/images')} ><MapsHomeWork sx={{ marginRight: 2 }} />Home Page Images</MenuItem>
-                            <MenuItem onClick={() => navigate('/admin/reports')} ><Report sx={{ marginRight: 2 }} />Reports</MenuItem>
-                            <MenuItem onClick={() => navigate('/admin/orders')} ><ShoppingBag sx={{ marginRight: 2 }} />Orders</MenuItem>
-                            <MenuItem onClick={onClickLogout} ><ExitToApp sx={{ marginRight: 2 }} />Log out</MenuItem>
+                            <MenuItem onClick={() => navigate('/admin/products')} ><Inventory sx={{ marginRight: 2 }} />Produtos</MenuItem>
+                            <MenuItem onClick={() => navigate('/admin/categories')} ><Edit sx={{ marginRight: 2 }} />Gêneros e Categorias</MenuItem>
+                            <MenuItem onClick={() => navigate('/admin/images')} ><MapsHomeWork sx={{ marginRight: 2 }} />Imagens da Página Inicial</MenuItem>
+                            <MenuItem onClick={() => navigate('/admin/reports')} ><Report sx={{ marginRight: 2 }} />Relatórios</MenuItem>
+                            <MenuItem onClick={() => navigate('/admin/orders')} ><ShoppingBag sx={{ marginRight: 2 }} />Pedidos</MenuItem>
+                            <MenuItem onClick={onClickLogout} ><ExitToApp sx={{ marginRight: 2 }} />Sair</MenuItem>
                         </MenuGroup>
                     }{
                         !admin && currentUser &&
-                        <MenuGroup title='Account'>
-                            <MenuItem onClick={() => navigate('/infos')} ><Person sx={{ marginRight: 2 }} /> My Informations</MenuItem>
-                            <MenuItem onClick={() => navigate('/orders')} ><ShoppingBag sx={{ marginRight: 2 }} /> Orders</MenuItem>
-                            <MenuItem onClick={() => navigate('/favorites')} ><Favorite sx={{ marginRight: 2 }} />Favorites</MenuItem>
-                            <MenuItem onClick={() => navigate('/cart')} ><ShoppingCart sx={{ marginRight: 2 }} />Cart</MenuItem>
-                            <MenuItem onClick={onClickLogout} ><ExitToApp sx={{ marginRight: 2 }} />Log out</MenuItem>
+                        <MenuGroup title='Conta'>
+                            <MenuItem onClick={() => navigate('/infos')} ><Person sx={{ marginRight: 2 }} />Minhas Informações</MenuItem>
+                            <MenuItem onClick={() => navigate('/orders')} ><ShoppingBag sx={{ marginRight: 2 }} />Pedidos</MenuItem>
+                            <MenuItem onClick={() => navigate('/favorites')} ><Favorite sx={{ marginRight: 2 }} />Favoritos</MenuItem>
+                            <MenuItem onClick={() => navigate('/cart')} ><ShoppingCart sx={{ marginRight: 2 }} />Carrinho</MenuItem>
+                            <MenuItem onClick={onClickLogout} ><ExitToApp sx={{ marginRight: 2 }} />Sair</MenuItem>
                         </MenuGroup>
                     }{
                         !currentUser &&
                         <MenuGroup>
                             <MenuItem onClick={() => navigate('/favorites')} ><Person sx={{ marginRight: 2 }} />Login</MenuItem>
-                            <MenuItem onClick={() => navigate('/favorites')} ><Favorite sx={{ marginRight: 2 }} />Favorites</MenuItem>
-                            <MenuItem onClick={() => navigate('/cart')} ><ShoppingCart sx={{ marginRight: 2 }} />Cart</MenuItem>
+                            <MenuItem onClick={() => navigate('/favorites')} ><Favorite sx={{ marginRight: 2 }} />Favoritos</MenuItem>
+                            <MenuItem onClick={() => navigate('/cart')} ><ShoppingCart sx={{ marginRight: 2 }} />Carrinho</MenuItem>
                         </MenuGroup>
                     }
                     <MenuDivider />

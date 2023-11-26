@@ -132,3 +132,5 @@ dist
 .pnp.*
 
 frontend/cypress/videos
+
+ngrok.yml

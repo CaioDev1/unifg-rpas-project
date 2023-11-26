@@ -19,7 +19,7 @@ const ProductsforAdmin = () => {
       .then((result) => {
         setProducts(result.allProducts);
       });
-  });
+  }, []);
 
   const onClickEdit = (id) => {
     setIsEdit(true);
@@ -32,16 +32,16 @@ const ProductsforAdmin = () => {
       .then((result) => {
         if (result.status) {
           toast({
-            title: 'Error!',
-            description: 'Somethings went wrong.',
+            title: 'Erro!',
+            description: 'Algo deu errado.',
             status: 'error',
             duration: 2000,
             isClosable: true
           });
         } else {
           toast({
-            title: 'Deleted!',
-            description: 'Product succesfully deleted.',
+            title: 'Excluído!',
+            description: 'Produto excluído com sucesso.',
             status: 'success',
             duration: 2000,
             isClosable: true
@@ -62,13 +62,13 @@ const ProductsforAdmin = () => {
           <Table variant='striped' >
             <Thead>
               <Tr>
-                <Th>Image</Th>
+                <Th>Imagem</Th>
                 <Th>Id</Th>
-                <Th>Name</Th>
-                <Th>Color</Th>
-                <Th>Gender</Th>
-                <Th>Price</Th>
-                <Th><Button colorScheme='facebook' onClick={onClickAdd} >Add New</Button></Th>
+                <Th>Nome</Th>
+                <Th>Cor</Th>
+                <Th>Gênero</Th>
+                <Th>Preço</Th>
+                <Th><Button colorScheme='facebook' onClick={onClickAdd} >Adicionar Novo</Button></Th>
               </Tr>
             </Thead>
             <Tbody>

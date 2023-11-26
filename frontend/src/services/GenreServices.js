@@ -1,17 +1,17 @@
-import axios from 'axios';
+import { api } from '../api';
 
 export const getAllGenres = async () => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/genres`);
+    const { data } = await api.get(`/genres`);
     return data;
 };
 
 export const getGenreById = async (id) => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/genres/${id}`);
+    const { data } = await api.get(`/genres/${id}`);
     return data;
 };
 
 export const addGenre = async (name, status) => {
-    const { data } = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/genres`, {
+    const { data } = await api.post(`/genres`, {
         name,
         status
     });
@@ -19,7 +19,7 @@ export const addGenre = async (name, status) => {
 };
 
 export const updateGenre = async (id, name, status) => {
-    const { data } = await axios.put(`${process.env.REACT_APP_API_BASE_URL}/genres/${id}`, {
+    const { data } = await api.put(`/genres/${id}`, {
         name,
         status
     });
@@ -27,6 +27,6 @@ export const updateGenre = async (id, name, status) => {
 };
 
 export const deleteGenre = async (id) => {
-    const { data } = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/genres/${id}`);
+    const { data } = await api.delete(`/genres/${id}`);
     return data;
 };

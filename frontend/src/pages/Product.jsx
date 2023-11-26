@@ -16,7 +16,6 @@ import { getCommentByProductId } from '../services/CommentServices';
 import { getRatingByProductId } from '../services/RatingServices';
 import useGetUserHaveThis from '../hooks/useGetUserHaveThis';
 
-
 const Product = () => {
 
   const toast = useToast();
@@ -98,8 +97,8 @@ const Product = () => {
       setRefresh(!refresh);
     } else {
       toast({
-        title: 'Error!',
-        description: 'You must choose a size.',
+        title: 'Erro!',
+        description: 'Você deve escolher um tamanho.',
         status: 'error',
         duration: 2000,
         isClosable: true
@@ -138,8 +137,8 @@ const Product = () => {
       onOpen(true);
     } else {
       toast({
-        title: 'Error!',
-        description: 'You must have this to write a review.',
+        title: 'Erro!',
+        description: 'Você deve possuir este produto para escrever uma avaliação.',
         status: 'error',
         duration: 2000,
         isClosable: true
@@ -152,9 +151,14 @@ const Product = () => {
       <Box p={{ base: 3, md: 10 }}  >
         <Box display='flex' justifyContent='center'>
           <SimpleGrid width={1200} columns={{ base: 1, md: 2 }} >
-            <Image src={product.imageUrl} />
+            <Image
+              width='100%'
+              height='100%'
+              objectFit='cover'
+              src={product.imageUrl}
+            />
             <Box p={3} maxWidth={600} >
-              <Text fontWeight={200} >Product Id: {location.state.productId}</Text>
+              <Text fontWeight={200} >ID do Produto: {location.state.productId}</Text>
               <Text fontSize={30} >{product.name}</Text>
               <Box
                 display='flex'
@@ -167,11 +171,11 @@ const Product = () => {
                   starRatedColor="#FFD700"
                   numberOfStars={5}
                   name='rating' />
-                <Text fontSize={16} fontWeight={500} > | {ratingCount} reviews</Text>
+                <Text fontSize={16} fontWeight={500} > | {ratingCount} avaliações</Text>
               </Box>
-              <Text mt={5} mb={3} fontSize={28} fontWeight={400} color='facebook.500' >Price : <b> {product.price}$ </b> </Text>
+              <Text mt={5} mb={3} fontSize={28} fontWeight={400} color='facebook.500' >Preço: <b> {product.price}$ </b> </Text>
               <Divider />
-              <Text mt={3} fontSize={20} fontWeight={500} >Sizes</Text>
+              <Text mt={3} fontSize={20} fontWeight={500} >Tamanhos</Text>
               <Box mt={3} display='flex' >
                 {
                   sizes.map((size, index) => {
@@ -211,7 +215,7 @@ const Product = () => {
                       colorScheme='facebook'
                       height={10}
                       width='100%'
-                    >ADD TO CART</Button>
+                    >ADICIONAR AO CARRINHO</Button>
                 }
                 <IconButton
                   icon={isFavorite ? <Favorite /> : <FavoriteBorder />}
@@ -229,12 +233,12 @@ const Product = () => {
                   variant='outline'
                   display={{ base: 'block', sm: 'none' }}
                   height={10}
-                  width='100%'> ADD TO FAVORITE</Button>
+                  width='100%'> ADICIONAR AOS FAVORITOS</Button>
               </Box>
               <Divider />
               <Box
                 mt={3}>
-                <Text fontSize={24} fontWeight={500} >Description</Text>
+                <Text fontSize={24} fontWeight={500} >Descrição</Text>
                 <Box mt={3}>
                   {product.description}
                 </Box>
@@ -242,44 +246,7 @@ const Product = () => {
             </Box>
           </SimpleGrid>
         </Box>
-        <Box maxWidth={1200} flexDirection='column' p={{ base: 3, md: 0 }} marginX='auto' >
-          <Text mt={10} mb={3} fontSize={40} fontWeight={300} >User Reviews</Text>
-          <Box
-            width='100%'
-            display='flex'
-            justifyContent='space-between'
-            flexDirection={{ base: 'column', md: 'row' }}
-            alignItems='center'
-            backgroundColor='whitesmoke'
-            borderRadius='4px'
-            px={2} py={5}
-            mb={10}
-          >
-            <Box>
-              <Box display='flex'>
-                <StarRatings
-                  starDimension={'20'}
-                  starSpacing={'2'}
-                  rating={ratings}
-                  starRatedColor="#FFD700"
-                  numberOfStars={5}
-                  name='rating' />
-                <Text fontSize={16} fontWeight={500} > | {ratingCount} reviews</Text>
-              </Box>
-              <Text my={3} display='flex' alignItems='center' ><Info sx={{ fontSize: '16px', mr: 1 }} /> You must have purchased the product for write a review.  </Text>
-            </Box>
-            <Button ml={2} mr={{ base: 0, md: 5 }} height={50} colorScheme='facebook' onClick={onClickWrite} >
-              Write a Review
-            </Button>
-          </Box>
-          {
-            comments.map((comment) => {
-              return <Comment key={comment._id} authorId={comment.author} commentText={comment.comment} createdAt={comment.createdAt} />
-            })
-          }
-        </Box>
       </Box>
-      <ReviewModal isOpen={isOpen} onClose={onClose} productId={location.state.productId} />
     </>
   )
 }

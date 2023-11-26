@@ -12,7 +12,6 @@ import Dropdown from './Dropdown';
 import Searchbar from './Searchbar';
 import useGetUserRole from '../hooks/useGetUserRole';
 
-
 const Navbar = () => {
 
   const [genres, setGenres] = useState([]);
@@ -97,15 +96,15 @@ const Navbar = () => {
               currentUser && !admin &&
                 <Menu isOpen={open}>
                   <Icon fontSize={30} color='inherit' as={Person} />
-                  <Text color='inherit' fontWeight={500} >Account</Text>
+                  <Text color='inherit' fontWeight={500} >Conta</Text>
                   <MenuButton />
                   <MenuList >
-                    <MenuGroup title='Account' >
-                      <MenuItem onClick={() => navigate('/infos')} ><Person sx={{ marginRight: 2 }} /> My Informations</MenuItem>
-                      <MenuItem onClick={() => navigate('/orders')} ><ShoppingBag sx={{ marginRight: 2 }} /> Orders</MenuItem>
+                    <MenuGroup title='Conta' >
+                      <MenuItem onClick={() => navigate('/infos')} ><Person sx={{ marginRight: 2 }} /> Minhas Informações</MenuItem>
+                      <MenuItem onClick={() => navigate('/orders')} ><ShoppingBag sx={{ marginRight: 2 }} /> Pedidos</MenuItem>
                     </MenuGroup>
                     <Divider />
-                    <MenuItem onClick={Logout} ><ExitToApp sx={{ marginRight: 2 }} /> Log out</MenuItem>
+                    <MenuItem onClick={Logout} ><ExitToApp sx={{ marginRight: 2 }} /> Sair</MenuItem>
                   </MenuList>
                 </Menu>
             }
@@ -124,14 +123,14 @@ const Navbar = () => {
                   <MenuButton />
                   <MenuList >
                     <MenuGroup title='Admin' >
-                      <MenuItem onClick={() => navigate('/admin/products')} ><Inventory sx={{ marginRight: 2 }} />Products</MenuItem>
-                      <MenuItem onClick={() => navigate('/admin/categories')} ><Edit sx={{ marginRight: 2 }} />Genres and Categories</MenuItem>
-                      <MenuItem onClick={() => navigate('/admin/images')} ><MapsHomeWork sx={{ marginRight: 2 }} />Home Page Images</MenuItem>
-                      <MenuItem onClick={() => navigate('/admin/reports')} ><Report sx={{ marginRight: 2 }} />Reports</MenuItem>
-                      <MenuItem onClick={() => navigate('/admin/orders')} ><ShoppingBag sx={{ marginRight: 2 }} />Orders</MenuItem>
+                      <MenuItem onClick={() => navigate('/admin/products')} ><Inventory sx={{ marginRight: 2 }} />Produtos</MenuItem>
+                      <MenuItem onClick={() => navigate('/admin/categories')} ><Edit sx={{ marginRight: 2 }} />Gêneros e Categorias</MenuItem>
+                      <MenuItem onClick={() => navigate('/admin/images')} ><MapsHomeWork sx={{ marginRight: 2 }} />Imagens da Página Inicial</MenuItem>
+                      <MenuItem onClick={() => navigate('/admin/reports')} ><Report sx={{ marginRight: 2 }} />Relatórios</MenuItem>
+                      <MenuItem onClick={() => navigate('/admin/orders')} ><ShoppingBag sx={{ marginRight: 2 }} />Pedidos</MenuItem>
                     </MenuGroup>
                     <Divider />
-                    <MenuItem onClick={Logout} ><ExitToApp sx={{ marginRight: 2 }} /> Log out</MenuItem>
+                    <MenuItem onClick={Logout} ><ExitToApp sx={{ marginRight: 2 }} /> Sair</MenuItem>
                   </MenuList>
                 </Menu>
             }
@@ -148,7 +147,7 @@ const Navbar = () => {
             onClick={() => navigate('/favorites')}
           >
             <Icon fontSize={30} color='inherit' as={Favorite} />
-            <Text color='inherit' fontWeight={500} >Favorites</Text>
+            <Text color='inherit' fontWeight={500} >Favoritos</Text>
           </Box>
           <Box
             color='facebook.500'
@@ -162,7 +161,7 @@ const Navbar = () => {
             data-testid="cart-page-btn"
           >
             <Icon fontSize={30} color='inherit' as={ShoppingCart} />
-            <Text color='inherit' fontWeight={500} >{itemCount > 0 ? `Cart (${itemCount})` : 'Cart'}</Text>
+            <Text color='inherit' fontWeight={500} >{itemCount > 0 ? `Carrinho (${itemCount})` : 'Carrinho'}</Text>
           </Box>
         </Box>
         <Hamburger base='none' sm='flex' md='none' />

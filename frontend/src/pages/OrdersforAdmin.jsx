@@ -35,13 +35,13 @@ const OrdersforAdmin = () => {
             <Thead>
               <Tr>
                 <Th>Id</Th>
-                <Th>Buyer</Th>
+                <Th>Comprador</Th>
                 <Th>Email</Th>
-                <Th>Phone</Th>
-                <Th>Address</Th>
-                <Th>Products</Th>
-                <Th>Order Date</Th>
-                <Th onClick={() => setCurrentStatus(!currentStatus)} cursor='pointer' _hover={{ textDecoration: 'underline' }} >Status - {currentStatus ? "Active" : "All"}</Th>
+                <Th>Telefone</Th>
+                <Th>Endereço</Th>
+                <Th>Produtos</Th>
+                <Th>Data do Pedido</Th>
+                <Th onClick={() => setCurrentStatus(!currentStatus)} cursor='pointer' _hover={{ textDecoration: 'underline' }} >Status - {currentStatus ? "Ativo" : "Todos"}</Th>
               </Tr>
             </Thead>
             <Tbody>

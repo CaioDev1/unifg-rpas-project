@@ -1,46 +1,46 @@
-import axios from 'axios';
+import { api } from '../api';
 
 export const getAllImages = async () => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/images`);
+    const { data } = await api.get(`images`);
     return data;
 };
 
 export const getImageById = async (id) => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/images/${id}`);
+    const { data } = await api.get(`images/${id}`);
     return data;
 };
 
 export const addImage = async (url) => {
-    const { data } = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/images`, {
+    const { data } = await api.post(`images`, {
         url
     });
     return data;
 };
 
 export const deleteImage = async (id) => {
-    const { data } = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/images/${id}`);
+    const { data } = await api.delete(`images/${id}`);
     return data;
 };
 
 export const getAllMiniImages = async () => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/minis`);
+    const { data } = await api.get(`minis`);
     return data;
 };
 
 export const getMiniImageById = async (id) => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/minis/${id}`);
+    const { data } = await api.get(`minis/${id}`);
     return data;
 };
 
 export const addMiniImage = async (url) => {
-    const { data } = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/minis`, {
+    const { data } = await api.post(`minis`, {
         url
     });
     return data;
 };
 
 export const deleteMiniImage = async (id) => {
-    const { data } = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/minis/${id}`);
+    const { data } = await api.delete(`minis/${id}`);
     return data;
 };
 

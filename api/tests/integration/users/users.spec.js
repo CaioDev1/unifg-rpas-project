@@ -6,7 +6,7 @@ const seedData = require('../../../seed');
 describe('Users', () => {
   beforeAll(async () => {
     await mongoose.connect(process.env.MONGODB_URL);
-    await seedData();
+    await seedData(process.env.MONGODB_URL);
 
     console.log('connected')
   })
@@ -66,7 +66,7 @@ describe('Users', () => {
 
     const userResponse = await request(app).post('/users/register').send(userToUpdate);
 
-    if(!userResponse.body?.newUser) throw new Error('No user to delete');
+    if(!userResponse.body?.newUser) throw new Error('No user to update');
 
     const createdUser = userResponse.body?.newUser;
 

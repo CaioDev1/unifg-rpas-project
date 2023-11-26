@@ -29,8 +29,8 @@ const Register = () => {
             if (result.data.newUser) {
               navigate('/login');
               toast({
-                title: 'Welcome to R-pas!',
-                description: 'You have successfully registered.',
+                title: 'Bem-vindo ao R-pas!',
+                description: 'Você se cadastrou com sucesso.',
                 status: 'success',
                 duration: 2000,
                 isClosable: true
@@ -38,8 +38,8 @@ const Register = () => {
             } else {
               resetForm();
               toast({
-                title: 'Error!',
-                description: 'This email is already in use.',
+                title: 'Erro!',
+                description: 'Este e-mail já está em uso.',
                 status: 'error',
                 duration: 2000,
                 isClosable: true
@@ -48,8 +48,8 @@ const Register = () => {
           });
       } else {
         toast({
-          title: 'Error!',
-          description: 'Please enter a valid phone number.',
+          title: 'Erro!',
+          description: 'Por favor, insira um número de telefone válido.',
           status: 'error',
           duration: 2000,
           isClosable: true
@@ -69,13 +69,13 @@ const Register = () => {
       mt={5}
     >
       <Box width={{ base: '100vw', sm: '500px' }} p={2}>
-        <Text textAlign='center' color={'facebook.500'} fontSize={32} fontWeight={600} mb={10} >Register</Text>
+        <Text textAlign='center' color={'facebook.500'} fontSize={32} fontWeight={600} mb={10} >Cadastro</Text>
         <Box display='flex' flexDirection={{ base: 'column', sm: 'row' }}>
           <FormControl mt={3} width={{ base: '100%', sm: '50%' }} me={{ base: 0, sm: 2 }} isInvalid={touched.firstName && errors.firstName} >
-            <FormLabel fontSize={20} >First Name</FormLabel>
+            <FormLabel fontSize={20} >Nome</FormLabel>
             <Input
               name='firstName'
-              placeholder='Enter First Name'
+              placeholder='Digite o nome'
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.firstName}
@@ -83,10 +83,10 @@ const Register = () => {
             {touched.firstName && <FormErrorMessage>{errors.firstName}</FormErrorMessage>}
           </FormControl>
           <FormControl mt={3} width={{ base: '100%', sm: '50%' }} isInvalid={touched.lastName && errors.lastName} >
-            <FormLabel fontSize={20} >Last Name</FormLabel>
+            <FormLabel fontSize={20} >Sobrenome</FormLabel>
             <Input
               name='lastName'
-              placeholder='Enter Last Name'
+              placeholder='Digite o sobrenome'
               onChange={handleChange}
               value={values.lastName}
               onBlur={handleBlur}
@@ -95,10 +95,10 @@ const Register = () => {
           </FormControl>
         </Box>
         <FormControl mt={3} isInvalid={touched.email && errors.email} >
-          <FormLabel fontSize={20} >Email</FormLabel>
+          <FormLabel fontSize={20} >E-mail</FormLabel>
           <Input
             name='email'
-            placeholder='Enter Email'
+            placeholder='Digite o e-mail'
             onChange={handleChange}
             value={values.email}
             onBlur={handleBlur}
@@ -106,13 +106,13 @@ const Register = () => {
           {touched.email && <FormErrorMessage>{errors.email}</FormErrorMessage>}
         </FormControl>
         <FormControl mt={3} isInvalid={touched.phone && errors.phone} >
-          <FormLabel fontSize={20} >Phone</FormLabel>
+          <FormLabel fontSize={20} >Telefone</FormLabel>
           <Input
             type='tel'
             name='phone'
             maxLength={11}
             pattern='[0-9]'
-            placeholder='Enter Phone'
+            placeholder='Digite o telefone'
             onChange={handleChange}
             value={values.phone}
             onBlur={handleBlur}
@@ -120,13 +120,13 @@ const Register = () => {
           {touched.phone && <FormErrorMessage>{errors.phone}</FormErrorMessage>}
         </FormControl>
         <FormControl mt={3} isInvalid={touched.password && errors.password} >
-          <FormLabel fontSize={20} >Password</FormLabel>
+          <FormLabel fontSize={20} >Senha</FormLabel>
           <InputGroup size='md'>
             <Input
               name='password'
               pr='4.5rem'
               type={show ? 'text' : 'password'}
-              placeholder='Enter password'
+              placeholder='Digite a senha'
               onChange={handleChange}
               value={values.password}
               onBlur={handleBlur}
@@ -139,10 +139,10 @@ const Register = () => {
           </InputGroup>
           {touched.password && <FormErrorMessage>{errors.password}</FormErrorMessage>}
         </FormControl>
-        <Checkbox name='terms' isChecked={values.terms} onChange={handleChange} mt={5} >I agree the <strong>Terms of Service</strong> and <strong>Privacy Policy</strong>.</Checkbox>
-        <Button mt={5} width='100%' variant='solid' colorScheme='facebook' disabled={!isValid} onClick={handleSubmit} >Register</Button>
+        <Checkbox name='terms' isChecked={values.terms} onChange={handleChange} mt={5} >Eu concordo com os <strong>Termos de Serviço</strong> e <strong>Política de Privacidade</strong>.</Checkbox>
+        <Button mt={5} width='100%' variant='solid' colorScheme='facebook' disabled={!isValid} onClick={handleSubmit} >Cadastrar</Button>
         <br />
-        <Text my={3} width='100%' textAlign='center' >or</Text>
+        <Text my={3} width='100%' textAlign='center' >ou</Text>
         <Button width='100%' variant='outline' colorScheme='facebook' onClick={() => navigate('/login')} >Login</Button>
       </Box>
     </Box>

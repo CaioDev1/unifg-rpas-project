@@ -31,6 +31,21 @@ services:
       - ./frontend:/app
     ports:
       - 3000:3000
+    environment:
+      - REACT_APP_API_BASE_URL=http://backend:3001
+
+  cypress:
+    image: cypress/included:latest
+    working_dir: /e2e
+    network_mode: host
+    command: sh -c "cypress run"
+    entrypoint: []
+    depends_on:
+      - frontend
+      - backend
+    volumes:
+      - ./frontend:/e2e:z
+
 
   backend:
     build: ./api

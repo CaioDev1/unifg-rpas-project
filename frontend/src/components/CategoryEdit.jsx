@@ -20,10 +20,13 @@ const CategoryEdit = ({ isEdit }) => {
             .then((result) => {
                 setAllGenres(result.allGenres);
             });
-        getCategoryByGenre(selectedGenre)
-            .then((result) => {
-                setAllCategories(result.category);
-            });
+            
+        if(selectedGenre) {
+            getCategoryByGenre(selectedGenre)
+                .then((result) => {
+                    setAllCategories(result.category);
+                });
+        }
     }, [isEdit, selectedGenre]);
 
     const onClickEdit = () => {

@@ -1,36 +1,32 @@
-import axios from 'axios';
+import { api } from '../api';
 
 export const getAllOrders = async () => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/orders`);
+    const { data } = await api.get(`orders`);
     return data;
 };
 
 export const getOrderById = async (id) => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/orders/${id}`);
+    const { data } = await api.get(`orders/${id}`);
     return data;
 };
 
 export const getOrdersByStatus = async (status) => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/orders/status/${status}`);
+    const { data } = await api.get(`orders/status/${status}`);
     return data;
 };
 
 export const getOrdersByUserId = async (id) => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/orders/user/${id}`);
+    const { data } = await api.get(`orders/user/${id}`);
     return data;
 };
 
-export const addOrder = async (products, buyer, address) => {
-    const { data } = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/orders`, {
-        products,
-        buyer,
-        address
-    });
+export const addOrder = async (payload) => {
+    const { data } = await api.post(`orders`, payload);
     return data;
 };
 
 export const updateOrderStatus = async (id, status, prepare, onWay, delivered, cancel) => {
-    const { data } = await axios.put(`${process.env.REACT_APP_API_BASE_URL}/orders/${id}`, {
+    const { data } = await api.put(`orders/${id}`, {
         status,
         prepare,
         onWay,
@@ -41,6 +37,6 @@ export const updateOrderStatus = async (id, status, prepare, onWay, delivered, c
 };
 
 export const deleteOrder = async (id) => {
-    const { data } = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/orders/${id}`);
+    const { data } = await api.delete(`orders/${id}`);
     return data;
 };

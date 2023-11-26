@@ -47,8 +47,8 @@ const Cart = () => {
       } else {
         navigate('/infos');
         toast({
-          title: 'Warning!',
-          description: 'You must give your address information first.',
+          title: 'Atenção!',
+          description: 'Você deve fornecer suas informações de endereço primeiro.',
           status: 'warning',
           duration: 2000,
           isClosable: true
@@ -57,8 +57,8 @@ const Cart = () => {
     } else {
       navigate('/login');
       toast({
-        title: 'Warning!',
-        description: 'You must login first.',
+        title: 'Atenção!',
+        description: 'Você precisa fazer login primeiro.',
         status: 'warning',
         duration: 2000,
         isClosable: true
@@ -84,15 +84,15 @@ const Cart = () => {
         <Box my={5} borderLeft={{ base: 'none', md: '2px solid whitesmoke' }} flexDirection='column' display='flex' bg='#fff' width={{ base: '100%', md: '20%' }} px={5} >
         {
           userAddress && <Box my={3} flexDirection='column' display='flex' bg='#fff' width={{ base: '100%' }}  >
-            <Text fontSize={28} mt={3} fontWeight={600} color='facebook.500' >Address</Text>
+            <Text fontSize={28} mt={3} fontWeight={600} color='facebook.500' >Endereço</Text>
             <Text mt={3} fontSize={24} color='facebook.500' fontWeight={300} >{userAddress}</Text>
           </Box>
         }
-          <Text fontSize={28} mt={10} fontWeight={600} color='facebook.500' >Order Details</Text>
-          <Text mt={3} fontSize={24} color='facebook.500' fontWeight={300} >Product Amount: {totalAmount}</Text>
-          <Text mt={3} fontSize={24} color='facebook.500' fontWeight={300} >Total Price: {totalPrice} $</Text>
-          <Button mt={10} colorScheme='facebook' onClick={onClickPurchase} >Purchase</Button>
-          <Button mt={3} variant='text' color='facebook.500' onClick={onClickRemove} >Remove All</Button>
+          <Text fontSize={28} mt={10} fontWeight={600} color='facebook.500' >Detalhes do Pedido</Text>
+          <Text mt={3} fontSize={24} color='facebook.500' fontWeight={300} >Quantidade de Produtos: {totalAmount}</Text>
+          <Text mt={3} fontSize={24} color='facebook.500' fontWeight={300} >Total: {totalPrice} $</Text>
+          <Button mt={10} colorScheme='facebook' onClick={onClickPurchase} >Comprar</Button>
+          <Button mt={3} variant='text' color='facebook.500' onClick={onClickRemove} >Remover Todos</Button>
 
         </Box>
       </Box>
@@ -108,15 +108,17 @@ const Cart = () => {
         p={5}
       >
         <Icon color='#314E89' fontSize={100} as={ShoppingCart} />
-        <Heading textAlign='center' fontSize={30} mt={8}  >You have nothing in your cart.</Heading>
-        <Text textAlign='center' fontSize={24} mt={3} fontWeight={300} >You haven't added a product to your cart. All you have to do is click on the cart icon.</Text>
+        <Heading textAlign='center' fontSize={30} mt={8}  >Você não tem nada no seu carrinho.</Heading>
+        <Text textAlign='center' fontSize={24} mt={3} fontWeight={300} >Você ainda não adicionou nenhum produto ao seu carrinho. Tudo que você precisa fazer é clicar no ícone do carrinho.</Text>
         <Button
           variant='solid'
           fontSize={20}
-          px={10} mt={10}
+          px={10
+
+} mt={10}
           colorScheme='facebook'
           onClick={() => navigate('/')}>
-          Start Shopping
+          Comece a Comprar
         </Button>
       </Box>
     )

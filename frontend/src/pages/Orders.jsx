@@ -7,7 +7,6 @@ import { useUserContext } from '../contexts/UserContext';
 import { getOrdersByUserId } from '../services/OrderServices';
 import OrderCard from '../components/OrderCard';
 
-
 const Orders = () => {
 
   const navigate = useNavigate();
@@ -19,15 +18,17 @@ const Orders = () => {
   useEffect(() => {
     getOrdersByUserId(currentUser)
       .then((result) => {
-        var orderArray=result.orders;
+        var orderArray = result.orders;
         setOrders(orderArray.sort((a, b) => (Number(a.orderDate) - Number(b.orderDate))).reverse());
         result.orders.forEach((order) => {
-          if (currentOrders === "active" && order.status){ setIsEmpty(false)};
+          if (currentOrders === "active" && order.status) {
+            setIsEmpty(false);
+          }
         });
       });
     if (currentOrders === "all") {
       setIsEmpty(false);
-    }      
+    }
   }, [currentUser, currentOrders, setOrders]);
 
   return (
@@ -41,7 +42,7 @@ const Orders = () => {
           mr={5}
           cursor='pointer'
           onClick={() => setCurrentOrders("active")}
-        >Active Orders</Text>
+        >Pedidos Ativos</Text>
         <Text
           textAlign='center'
           fontSize={30}
@@ -50,11 +51,11 @@ const Orders = () => {
           ml={5}
           cursor='pointer'
           onClick={() => setCurrentOrders("all")}
-        >All Orders</Text>
+        >Todos os Pedidos</Text>
       </Box>
       <Box py={3} px={{ base: 3, md: 5, lg: 10 }} >
         {
-          orders.length>0 ? orders.map((order, index) => {
+          orders.length > 0 ? orders.map((order, index) => {
             if (currentOrders === "active") {
               return order.status && <OrderCard key={index} orderId={order._id} />
             } else {
@@ -71,15 +72,15 @@ const Orders = () => {
               p={3}
             >
               <Icon color='#314E89' fontSize={100} as={ShoppingCart} />
-              <Heading textAlign='center' fontSize={30} mt={8}  >You don't have any orders.</Heading>
-              <Text textAlign='center' fontSize={24} mt={2} fontWeight={300} >Check out our bestsellers and find something for you!</Text>
+              <Heading textAlign='center' fontSize={30} mt={8}  >Você não tem nenhum pedido.</Heading>
+              <Text textAlign='center' fontSize={24} mt={2} fontWeight={300} >Confira nossos mais vendidos e encontre algo para você!</Text>
               <Button
                 variant='solid'
                 fontSize={20}
                 px={10} mt={10}
                 colorScheme='facebook'
                 onClick={() => navigate('/')}>
-                Start Shopping
+                Comece a Comprar
               </Button>
             </Box>
         }
@@ -94,15 +95,15 @@ const Orders = () => {
             p={3}
           >
             <Icon color='#314E89' fontSize={100} as={ShoppingCart} />
-            <Heading textAlign='center' fontSize={30} mt={8}  >You don't have any active orders.</Heading>
-            <Text textAlign='center' fontSize={24} mt={2} fontWeight={300} >Check out our bestsellers and find something for you!</Text>
+            <Heading textAlign='center' fontSize={30} mt={8}  >Você não tem nenhum pedido ativo.</Heading>
+            <Text textAlign='center' fontSize={24} mt={2} fontWeight={300} >Confira nossos mais vendidos e encontre algo para você!</Text>
             <Button
               variant='solid'
               fontSize={20}
               px={10} mt={10}
               colorScheme='facebook'
               onClick={() => navigate('/')}>
-              Start Shopping
+              Comece a Comprar
             </Button>
           </Box>
         }

@@ -17,6 +17,8 @@ const Searchbar = () => {
     };
 
     const handleSubmit = (e) => {
+        if(!searchText?.length) return;
+
         setCanSearch(true);
         setSearch(searchText);
         navigate(`/search`);
@@ -30,11 +32,11 @@ const Searchbar = () => {
                     <Input
                         name='search'
                         pr='4.5rem'
-                        placeholder='Search for clothes...'
+                        placeholder='Procurar por roupas'
                         onInput={handleInput}
                     />
                     <InputRightElement width='4rem'>
-                        <Button h='1.75rem' size='sm' variant='solid' colorScheme='facebook' onClick={handleSubmit} >
+                        <Button h='1.75rem' size='sm' variant='solid' colorScheme='facebook' onClick={handleSubmit} disabled={!searchText?.length}>
                             <Search />
                         </Button>
                     </InputRightElement>

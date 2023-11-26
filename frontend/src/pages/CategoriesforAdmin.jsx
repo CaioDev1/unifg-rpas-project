@@ -18,7 +18,7 @@ const CategoriesforAdmin = () => {
           mr={5}
           cursor='pointer'
           onClick={() => setCurrentMode("add")}
-        >Add</Text>
+        >Adicionar</Text>
         <Text
           textAlign='center'
           fontSize={30}
@@ -27,7 +27,7 @@ const CategoriesforAdmin = () => {
           ml={5}
           cursor='pointer'
           onClick={() => setCurrentMode("edit")}
-        >Edit</Text>
+        >Editar</Text>
       </Box>
       <Box display='flex' justifyContent='space-around' flexDirection={{ base: 'column', md: 'row' }} >
         <GenreEdit isEdit={currentMode === "edit"} />

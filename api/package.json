@@ -4,8 +4,9 @@
   "description": "eCommerce api",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watchAll",
+    "test": "jest --runInBand ./tests/integration/*",
+    "test:integration:watch": "jest --watchAll --runInBand -c ./jest.config.js",
+    "test:unit": "jest --runInBand ./tests/unit/*",
     "start": "nodemon server.js",
     "start:prod": "npm run seed && node server.js",
     "seed": "node ./seed/"
@@ -15,8 +16,6 @@
     "Api",
     "Clothes"
   ],
-  "author": "Ahmed Semih Erkan",
-  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -29,6 +28,8 @@
     "supertest": "^6.3.3"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.10"
+    "@jest-mock/express": "^2.0.2",
+    "@types/jest": "^29.5.10",
+    "mongodb-memory-server": "^9.1.1"
   }
 }

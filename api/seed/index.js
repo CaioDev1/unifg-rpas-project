@@ -11,8 +11,8 @@ const Rating = require('../models/Rating');
 const Report = require('../models/Report');
 const User = require('../models/User');
 
-const seedData = () => {
-  mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true }, async () => {
+const seedData = (MONGODB_URL) => {
+  mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true }, async () => {
     const db = mongoose.connection;
 
     try {
@@ -33,18 +33,16 @@ const seedData = () => {
 
       // Seed data for Genre
       const genreSeed = [
-        { name: 'Clothing', status: true },
-        { name: 'Accessories', status: true },
-        { name: 'Kids', status: true },
+        { name: 'Roupas', status: true },
+        { name: 'Infantil', status: true },
         // Add more genres as needed
       ];
       const genres = await Genre.insertMany(genreSeed);
 
       // Seed data for Category
       const categorySeed = [
-        { name: 'Men\'s Clothing', genre: genres[0]._id, status: true },
-        { name: 'Women\'s Clothing', genre: genres[0]._id, status: true },
-        { name: 'Accessories', genre: genres[1]._id, status: true },
+        { name: 'Roupas masculinas', genre: genres[0]._id, status: true },
+        { name: 'Roupas femininas', genre: genres[0]._id, status: true },
         // Add more categories as needed
       ];
       const categories = await Category.insertMany(categorySeed);
@@ -53,23 +51,23 @@ const seedData = () => {
       const productSeed = [
         {
           imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpzkcvIe0RO5Mq4kUgwSSh6mfImwd5AeHpbg&usqp=CAU',
-          name: 'Men\'s T-Shirt',
+          name: 'Jaqueta masculina',
           color: 'Blue',
           sizes: ['S', 'M', 'L', 'XL'],
-          description: 'Comfortable cotton t-shirt for men.',
+          description: 'Jaqueta masculina de alta qualidade.',
           category: categories[0]._id,
-          gender: 'Male',
+          gender: 'man',
           price: 19.99,
           status: true,
         },
         {
           imageUrl: 'https://storage.needpix.com/rsynced_images/fashion-3497410_1280.jpg',
-          name: 'Women\'s Jeans',
+          name: 'Jeans feminino',
           color: 'Black',
           sizes: ['XS', 'S', 'M', 'L'],
-          description: 'Stylish black jeans for women.',
+          description: 'Calça estilosa em jeans',
           category: categories[1]._id,
-          gender: 'Female',
+          gender: 'woman',
           price: 29.99,
           status: true,
         },
@@ -102,7 +100,7 @@ const seedData = () => {
           firstName: 'John',
           lastName: 'Doe',
           email: 'john.doe@example.com',
-          password: 'password123', // You may want to hash the password before seeding
+          password: 'password123',
           address: '456 Oak Street',
           phone: '123-456-7890',
           admin: false,
@@ -112,7 +110,7 @@ const seedData = () => {
           firstName: 'Jane',
           lastName: 'Smith',
           email: 'jane.smith@example.com',
-          password: 'password456', // You may want to hash the password before seeding
+          password: 'password456',
           address: '789 Pine Avenue',
           phone: '987-654-3210',
           admin: true,

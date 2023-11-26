@@ -14,6 +14,8 @@ const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
+    if(!currentUser) return;
+    
     getUserById(currentUser)
       .then(result => {
         setFavorites(result.user.favorites);
@@ -44,15 +46,15 @@ const Favorites = () => {
           p={3}
         >
           <Icon color='#314E89' fontSize={100} as={Favorite} />
-          <Heading textAlign='center' fontSize={30} mt={8}  >You don't have any favorite</Heading>
-          <Text textAlign='center' fontSize={24} mt={2} fontWeight={300} >You haven't added a product to your favourites. All you have to do is click on the little heart icon.</Text>
+          <Heading textAlign='center' fontSize={30} mt={8}  >Você não tem nenhum favorito</Heading>
+          <Text textAlign='center' fontSize={24} mt={2} fontWeight={300} >Você não adicionou nenhum produto aos seus favoritos. Tudo que você precisa fazer é clicar no ícone de coração.</Text>
           <Button
             variant='solid'
             fontSize={20}
             px={10} mt={10}
             colorScheme='facebook'
             onClick={() => navigate('/')}>
-            Start Shopping
+            Comece a Comprar
           </Button>
         </Box>
       )
@@ -68,8 +70,8 @@ const Favorites = () => {
         p={3}
       >
         <Icon color='#314E89' fontSize={100} as={Favorite} />
-        <Heading textAlign='center' fontSize={30} mt={8}  >You must be logged in</Heading>
-        <Text textAlign='center' fontSize={24} mt={2} fontWeight={300} >You must be logged in to see your favorites or buy something.</Text>
+        <Heading textAlign='center' fontSize={30} mt={8}  >Você precisa estar logado</Heading>
+        <Text textAlign='center' fontSize={24} mt={2} fontWeight={300} >Você precisa estar logado para ver seus favoritos ou comprar algo.</Text>
         <Button
           variant='solid'
           fontSize={20}

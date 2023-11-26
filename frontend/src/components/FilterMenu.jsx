@@ -9,7 +9,7 @@ const FilterMenu = ({ openFilter, setProducts, setSortBy }) => {
 
     const {canSearch,setCanSearch}=useSearchContext();
 
-    const [minPrice, setMinPrice] = useState(30);
+    const [minPrice, setMinPrice] = useState(5);
     const [maxPrice, setMaxPrice] = useState(250);
     const [gender, setGender] = useState("all");
     const [color, setColor] = useState("all");
@@ -17,7 +17,7 @@ const FilterMenu = ({ openFilter, setProducts, setSortBy }) => {
     useEffect(()=>{
         setColor("all");
         setGender("all");
-        setMinPrice(30);
+        setMinPrice(5);
         setMaxPrice(250);
     },[canSearch]);
 
@@ -65,12 +65,12 @@ const FilterMenu = ({ openFilter, setProducts, setSortBy }) => {
         <Box
             display={openFilter ? 'block' : 'none'} minHeight={725} maxHeight={850} p={3} backgroundColor='#fff' maxWidth={400}>
             <Box px={2}>
-                <Text fontSize={20} my={3} fontWeight={500} >Price Range</Text>
+                <Text fontSize={20} my={3} fontWeight={500} >Faixa de Preço</Text>
                 <RangeSlider
                     onChangeEnd={onChangePriceRange}
                     defaultValue={[minPrice, maxPrice]}
                     max={250}
-                    min={30}
+                    min={5}
                 >
                     <RangeSliderTrack>
                         <RangeSliderFilledTrack bg='facebook.500' />
@@ -80,7 +80,6 @@ const FilterMenu = ({ openFilter, setProducts, setSortBy }) => {
                 </RangeSlider>
                 <Box display='flex' my={3} alignItems='center' justifyContent='space-between'>
                     <Text fontSize={16} fontWeight={600} >{minPrice} $ - {maxPrice} $</Text>
-
                 </Box>
                 <Divider mb={3} />
             </Box>
@@ -88,7 +87,7 @@ const FilterMenu = ({ openFilter, setProducts, setSortBy }) => {
                 display='flex'
                 flexDirection='column'
             >
-                <Text fontSize={20} mb={3} fontWeight={500} >Size</Text>
+                <Text fontSize={20} mb={3} fontWeight={500} >Tamanho</Text>
                 <Checkbox colorScheme='facebook' value='XS' fontWeight={600} >XS</Checkbox>
                 <Checkbox colorScheme='facebook' value='S' fontWeight={600} >S</Checkbox>
                 <Checkbox defaultChecked colorScheme='facebook' value='M' fontWeight={600} >M</Checkbox>
@@ -97,27 +96,27 @@ const FilterMenu = ({ openFilter, setProducts, setSortBy }) => {
                 <Divider my={3} />
             </Box>
             <Box mt={3}>
-                <Text fontSize={20} mb={3} fontWeight={500} >Gender</Text>
+                <Text fontSize={20} mb={3} fontWeight={500} >Gênero</Text>
                 <RadioGroup display='flex' justifyContent='space-between' flexDirection={{ base: 'column', md: 'row' }} onChange={setGender} onClick={onChangeGender} value={gender} >
-                    <Radio colorScheme='facebook' value='all' fontWeight={600} >All</Radio>
-                    <Radio colorScheme='facebook' value='man' fontWeight={600} >Man</Radio>
-                    <Radio colorScheme='facebook' value='woman' fontWeight={600} >Woman</Radio>
-                    <Radio colorScheme='facebook' value='unisex' fontWeight={600} >Unisex</Radio>
+                    <Radio colorScheme='facebook' value='all' fontWeight={600} >Todos</Radio>
+                    <Radio colorScheme='facebook' value='man' fontWeight={600} >Homem</Radio>
+                    <Radio colorScheme='facebook' value='woman' fontWeight={600} >Mulher</Radio>
+                    <Radio colorScheme='facebook' value='unisex' fontWeight={600} >Unissex</Radio>
                 </RadioGroup>
                 <Divider my={3} />
             </Box>
             <Box display='flex'
                 flexDirection='column' pb={3}>
-                <Text fontSize={20} mb={3} fontWeight={500} >Color</Text>
+                <Text fontSize={20} mb={3} fontWeight={500} >Cor</Text>
                 <RadioGroup display='flex' flexDirection='column' onChange={setColor} onClick={onChangeColor} value={color} >
-                    <Radio mb={2} colorScheme='facebook' value='all' fontWeight={600} >All</Radio>
-                    <Radio mb={2} colorScheme='facebook' value='blue' fontWeight={600} >Blue</Radio>
-                    <Radio mb={2} colorScheme='blackAlpha' value='white' fontWeight={600} >White</Radio>
-                    <Radio mb={2} colorScheme='green' value='green' fontWeight={600} >Green</Radio>
-                    <Radio mb={2} colorScheme='gray' value='black' fontWeight={600} >Black</Radio>
-                    <Radio mb={2} colorScheme='red' value='red' fontWeight={600} >Red</Radio>
+                    <Radio mb={2} colorScheme='facebook' value='all' fontWeight={600} >Todos</Radio>
+                    <Radio mb={2} colorScheme='facebook' value='blue' fontWeight={600} >Azul</Radio>
+                    <Radio mb={2} colorScheme='blackAlpha' value='white' fontWeight={600} >Branco</Radio>
+                    <Radio mb={2} colorScheme='green' value='green' fontWeight={600} >Verde</Radio>
+                    <Radio mb={2} colorScheme='gray' value='black' fontWeight={600} >Preto</Radio>
+                    <Radio mb={2} colorScheme='red' value='red' fontWeight={600} >Vermelho</Radio>
                 </RadioGroup>
-                <Button mt={5} colorScheme='facebook' onClick={onClickSearch} >Search</Button>
+                <Button mt={5} colorScheme='facebook' onClick={onClickSearch} >Pesquisar</Button>
             </Box>
         </Box>
     )

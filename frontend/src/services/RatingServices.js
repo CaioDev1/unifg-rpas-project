@@ -1,27 +1,27 @@
-import axios from 'axios';
+import { api } from '../api';
 
 export const getAllRatings = async () => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/ratings`);
+    const { data } = await api.get(`ratings`);
     return data
 };
 
 export const getRatingById = async (id) => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/ratings/${id}`);
+    const { data } = await api.get(`ratings/${id}`);
     return data;
 };
 
 export const getRatingByOwnerId = async (ownerId) => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/ratings/owner/${ownerId}`);
+    const { data } = await api.get(`ratings/owner/${ownerId}`);
     return data;
 };
 
 export const getRatingByProductId = async (productId) => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/ratings/product/${productId}`);
+    const { data } = await api.get(`ratings/product/${productId}`);
     return data;
 }
 
 export const addRating = async (product, rating, owner) => {
-    const { data } = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/ratings`, {
+    const { data } = await api.post(`ratings`, {
         for: product,
         rating,
         owner
@@ -30,7 +30,7 @@ export const addRating = async (product, rating, owner) => {
 };
 
 export const updateRating = async (id, product, rating, owner) => {
-    const { data } = await axios.put(`${process.env.REACT_APP_API_BASE_URL}/ratings/${id}`, {
+    const { data } = await api.put(`ratings/${id}`, {
         for: product,
         rating,
         owner
@@ -39,6 +39,6 @@ export const updateRating = async (id, product, rating, owner) => {
 };
 
 export const deleteRating = async (id) => {
-    const { data } = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/ratings/${id}`);
+    const { data } = await api.delete(`ratings/${id}`);
     return data;
 };
